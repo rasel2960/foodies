@@ -1051,7 +1051,9 @@ img {
 
 /* ===== CTA BANNER ===== */
 .cta-banner {
-  padding: 60px var(--container-padding-desktop);
+  padding: 40px 0;
+  width: 100%;
+  margin: 0;
 }
 
 .cta-banner-container {
@@ -1059,58 +1061,63 @@ img {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 458.34px;
-  border-radius: 16px;
+  height: 300px; /* Mobile height */
+  border-radius: 0; /* Mobile: no radius */
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
+  width: 100%;
 }
 
 .cta-content p {
   font-family: var(--font-family);
   font-weight: 600;
-  font-size: 60px;
-  line-height: 100%;
+  font-size: 40px; /* Mobile size */
+  line-height: 1.3;
   letter-spacing: 0%;
   text-align: center;
   color: #ffffff;
   margin-bottom: 30px;
+  padding: 0 20px;
 }
 
-@media (max-width: 768px) {
+/* Desktop (min-width: 992px) */
+@media (min-width: 992px) {
   .cta-banner {
-    padding: 40px 0;
-    width: 100%;
-    margin: 0;
+    padding: 60px var(--container-padding-desktop);
   }
 
   .cta-banner-container {
-    width: 100%;
-    height: 300px;
-    border-radius: 0;
-    background-size: cover;
-    background-position: center;
+    height: 458.34px;
+    border-radius: 16px;
   }
 
   .cta-content p {
-    font-size: 40px;
-    padding: 0 20px;
-    line-height: 1.3;
+    font-size: 60px;
+    line-height: 100%;
+    padding: 0;
   }
 }
 
 /* ===== FOOTER ===== */
 .footer {
-  padding: 60px var(--container-padding-desktop);
+  padding: 40px var(--container-padding-mobile);
   background-color: white;
 }
 
 .footer-content {
   display: grid;
-  grid-template-columns: 1.5fr repeat(3, 1fr);
-  gap: 60px;
+  grid-template-columns: 1fr; /* Mobile: 1 col */
+  gap: 40px;
   margin-bottom: 40px;
+  text-align: center; /* Mobile: Centered */
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Mobile: Center items */
 }
 
 .footer-col h3 {
@@ -1118,7 +1125,6 @@ img {
   font-weight: 500;
   font-size: 24px;
   line-height: 100%;
-  letter-spacing: 0%;
   color: var(--text);
   margin-bottom: 20px;
   padding: 15px 0;
@@ -1128,6 +1134,7 @@ img {
   list-style: none;
   padding: 0;
   margin: 0;
+  text-align: center; /* Mobile: Center links */
 }
 
 .footer-links li {
@@ -1139,7 +1146,6 @@ img {
   font-weight: 400;
   font-size: 16px;
   line-height: 100%;
-  letter-spacing: 0%;
   color: var(--text);
   text-decoration: none;
 }
@@ -1154,7 +1160,6 @@ img {
   font-weight: 400;
   font-size: 16px;
   line-height: 100%;
-  letter-spacing: 0%;
   color: var(--text);
   margin-bottom: 20px;
   padding: 15px 0;
@@ -1163,6 +1168,7 @@ img {
 .social-icons {
   display: flex;
   gap: 15px;
+  justify-content: center; /* Mobile: Center icons */
 }
 
 .social-icons a {
@@ -1176,13 +1182,16 @@ img {
 
 .newsletter-form {
   display: flex;
+  flex-direction: column; /* Mobile: Stacked form */
+  align-items: center;
   gap: 10px;
+  width: 100%;
 }
 
 .newsletter-form input {
-  width: 205px;
+  width: 100%; /* Mobile: Full width */
   height: 49.93px;
-  border-radius: var(--border-radius);
+  border-radius: 0; /* Mobile: Square corners */
   background: #f0f1ec;
   border: 1px solid #ddd;
   padding: 0 15px;
@@ -1196,9 +1205,9 @@ img {
 }
 
 .subscribe-btn {
-  width: 118px;
+  width: 100%; /* Mobile: Full width */
   height: 49.93px;
-  border-radius: var(--border-radius);
+  border-radius: 0; /* Mobile: Square corners */
   background: var(--primary);
   border: 1px solid var(--primary);
   color: white;
@@ -1226,41 +1235,43 @@ img {
   color: #666;
 }
 
-@media (max-width: 768px) {
+/* Desktop (min-width: 992px) */
+@media (min-width: 992px) {
   .footer {
-    padding: 40px var(--container-padding-mobile);
+    padding: 60px var(--container-padding-desktop);
   }
 
   .footer-content {
-    grid-template-columns: 1fr;
-    gap: 40px;
-    text-align: center;
+    grid-template-columns: 1.5fr repeat(3, 1fr); /* Desktop: 4 cols */
+    gap: 60px;
+    text-align: left;
   }
 
   .footer-col {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
   }
 
   .footer-links {
-    text-align: center;
+    text-align: left;
   }
 
   .social-icons {
-    justify-content: center;
+    justify-content: flex-start;
   }
 
   .newsletter-form {
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
+    flex-direction: row;
+    width: auto;
   }
 
-  .newsletter-form input,
+  .newsletter-form input {
+    width: 205px;
+    border-radius: var(--border-radius);
+  }
+
   .subscribe-btn {
-    width: 100%;
-    border-radius: 0;
+    width: 118px;
+    border-radius: var(--border-radius);
   }
 }
 /* ===== END OF STYLES ===== */
