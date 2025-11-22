@@ -718,12 +718,12 @@ img {
 
 /* ===== FEATURE FOODS ===== */
 .feature-foods {
-  padding: 60px var(--container-padding-desktop);
+  padding: 40px var(--container-padding-mobile);
 }
 
 .feature-foods-header {
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 40px;
 }
 
 .feature-foods-intro {
@@ -731,62 +731,63 @@ img {
   font-weight: 500;
   font-size: 15px;
   line-height: 100%;
-  letter-spacing: 0%;
   color: var(--text);
-  border: 1.5px solid var(--primary);
-  background: var(--light-bg);
-  border-radius: 8px;
-  padding: 12px 20px;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 20px;
+  display: inline-block;
+  margin-bottom: 10px;
 }
 
 .feature-foods-intro img {
-  height: 20px;
-  width: auto;
+  display: none; /* Hidden on mobile */
 }
 
 .feature-foods-header h2 {
   font-family: var(--font-family);
   font-weight: 500;
-  font-size: 60px;
+  font-size: 40px; /* Mobile size */
   line-height: 100%;
-  letter-spacing: 0%;
   color: var(--text);
 }
 
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 1fr; /* Mobile: 1 col */
   gap: 0;
 }
 
 .feature-card {
   border: 1.5px solid var(--primary);
   background: var(--light-bg);
-  height: 292.08px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  /* Removed align-items: center to allow full width stretch */
+  width: 100%;
 }
 
 .image-card {
   padding: 0;
+  height: 250px; /* Mobile height */
+  width: 90%; /* Narrower by default on mobile */
+  margin: 0 auto;
+}
+
+/* First image card (which is the 1st child) stays full width on mobile */
+.feature-card:nth-child(1) {
+  width: 100%;
 }
 
 .image-card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
 
 .content-card {
   text-align: left;
   align-items: flex-start;
   padding: 30px;
+  min-height: 280px;
 }
 
 .content-card h3 {
@@ -794,7 +795,6 @@ img {
   font-weight: 500;
   font-size: 24px;
   line-height: 100%;
-  letter-spacing: 0%;
   color: var(--text);
   margin-bottom: 15px;
 }
@@ -804,7 +804,6 @@ img {
   font-weight: 400;
   font-size: 16px;
   line-height: 100%;
-  letter-spacing: 0%;
   color: var(--text);
   margin-bottom: 20px;
 }
@@ -816,7 +815,6 @@ img {
   font-weight: 500;
   font-size: 15px;
   line-height: 100%;
-  letter-spacing: 0%;
   color: #7ef5bb;
   text-decoration: none;
   display: flex;
@@ -829,81 +827,75 @@ img {
   background-color: #e6fdf0;
 }
 
-@media (max-width: 768px) {
+/* Mobile Reordering */
+.feature-card:nth-child(1) { order: 1; }
+.feature-card:nth-child(2) { order: 2; }
+.feature-card:nth-child(3) { order: 3; }
+.feature-card:nth-child(4) { order: 4; }
+.feature-card:nth-child(5) { order: 6; }
+.feature-card:nth-child(6) { order: 5; }
+.feature-card:nth-child(7) { order: 8; }
+.feature-card:nth-child(8) { order: 7; }
+
+/* Tablet (min-width: 768px) */
+@media (min-width: 768px) {
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .feature-card { order: initial !important; }
+  
+  .image-card, .content-card {
+    height: 292.08px;
+  }
+  
+  /* Reset width for tablet/desktop */
+  .image-card {
+    width: 100%;
+  }
+}
+
+/* Desktop (min-width: 992px) */
+@media (min-width: 992px) {
   .feature-foods {
-    padding: 40px var(--container-padding-mobile);
+    padding: 60px var(--container-padding-desktop);
+  }
+  
+  .feature-foods-header {
+    margin-bottom: 60px;
+  }
+  
+  .feature-foods-intro {
+    border: 1.5px solid var(--primary);
+    background: var(--light-bg);
+    border-radius: 8px;
+    padding: 12px 20px;
+    margin-bottom: 20px;
+  }
+  
+  .feature-foods-intro img {
+    display: inline-block;
+    height: 20px;
+    width: auto;
+  }
+  
+  .feature-foods-header h2 {
+    font-size: 60px;
   }
 
   .features-grid {
-    grid-template-columns: 1fr;
-    gap: 0;
-  }
-
-  .feature-foods-header {
-    margin-bottom: 50px;
-  }
-
-  .feature-foods-intro {
-    border: none;
-    background: none;
-    padding: 0;
-    display: block;
-  }
-
-  /* Hide the frame image on mobile */
-  .feature-foods-intro img {
-    display: none;
-  }
-
-  .feature-foods-header h2 {
-    font-size: 40px;
-  }
-
-  .feature-card:nth-child(1) {
-    order: 1;
-  }
-  .feature-card:nth-child(2) {
-    order: 2;
-  }
-  .feature-card:nth-child(3) {
-    order: 3;
-  }
-  .feature-card:nth-child(4) {
-    order: 4;
-  }
-  .feature-card:nth-child(5) {
-    order: 6;
-  }
-  .feature-card:nth-child(6) {
-    order: 5;
-  }
-  .feature-card:nth-child(7) {
-    order: 8;
-  }
-  .feature-card:nth-child(8) {
-    order: 7;
-  }
-
-  .image-card {
-    height: 250px;
-    width: 90%;
-    margin: 0 auto;
-  }
-
-  .content-card {
-    height: 280px;
-    width: 100%;
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
 /* ===== POPULAR PRODUCTS ===== */
 .popular-products {
-  padding: 60px var(--container-padding-desktop);
+  padding: 40px var(--container-padding-mobile);
 }
 
 .products-header {
-  text-align: left;
-  margin-bottom: 60px;
+  text-align: center; /* Mobile centered */
+  margin-bottom: 40px;
 }
 
 .products-intro {
@@ -911,7 +903,6 @@ img {
   font-weight: 500;
   font-size: 15px;
   line-height: 100%;
-  letter-spacing: 0%;
   color: var(--text);
   margin-bottom: 15px;
 }
@@ -919,41 +910,41 @@ img {
 .products-header h2 {
   font-family: var(--font-family);
   font-weight: 500;
-  font-size: 60px;
+  font-size: 40px; /* Mobile size */
   line-height: 100%;
-  letter-spacing: 0%;
   color: var(--text);
 }
 
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 30px;
+  grid-template-columns: 1fr; /* Mobile 1 col */
+  gap: 20px;
 }
 
 .product-card {
-  height: 444px;
+  height: auto;
+  min-height: 444px;
   border-radius: var(--border-radius);
   padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+  border: 2px solid var(--gray-border);
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
 }
 
 .product-card:nth-child(1) {
   border: 1px solid var(--primary);
 }
 
-.product-card:nth-child(2),
-.product-card:nth-child(3),
-.product-card:nth-child(4) {
-  border: 2px solid var(--gray-border);
-}
-
 .product-card img {
-  width: 190px;
-  height: 189.57px;
+  width: 100%;
+  max-width: 190px; /* Keep original size as max */
+  height: auto;
+  aspect-ratio: 1 / 1; /* Maintain square aspect ratio */
   border-radius: var(--border-radius);
   object-fit: cover;
   margin-bottom: 20px;
@@ -974,7 +965,6 @@ img {
   font-weight: 400;
   font-size: 20px;
   line-height: 100%;
-  letter-spacing: 0%;
   color: var(--text);
   margin-bottom: 15px;
 }
@@ -988,7 +978,6 @@ img {
   font-weight: 400;
   font-size: 16px;
   line-height: 100%;
-  letter-spacing: 0%;
   color: #999;
   text-decoration: line-through;
   margin-right: 8px;
@@ -999,7 +988,6 @@ img {
   font-weight: 600;
   font-size: 18px;
   line-height: 100%;
-  letter-spacing: 0%;
   color: var(--primary);
 }
 
@@ -1011,7 +999,6 @@ img {
   font-weight: 400;
   font-size: 20px;
   line-height: 100%;
-  letter-spacing: 0%;
   padding: 12px 24px;
   border-radius: 8px;
   cursor: pointer;
@@ -1026,36 +1013,39 @@ img {
   color: white;
 }
 
-@media (max-width: 768px) {
-  .popular-products {
-    padding: 40px var(--container-padding-mobile);
-  }
-
+/* Tablet (min-width: 768px) */
+@media (min-width: 768px) {
   .products-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
   }
-
+  
   .product-card {
-    width: 100%;
-    max-width: 300px;
-    margin: 0 auto;
-    border-radius: 0;
+    max-width: none;
   }
+}
 
-  .product-card img {
-    width: 190px;
-    height: 190px;
-    border-radius: var(--border-radius);
+/* Desktop (min-width: 992px) */
+@media (min-width: 992px) {
+  .popular-products {
+    padding: 60px var(--container-padding-desktop);
   }
-
-  .products-header,
-  .product-card {
-    text-align: center;
+  
+  .products-header {
+    text-align: left;
+    margin-bottom: 60px;
   }
-
+  
   .products-header h2 {
-    font-size: 40px;
+    font-size: 60px;
+  }
+  
+  .products-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  .product-card {
+    height: 444px;
   }
 }
 
