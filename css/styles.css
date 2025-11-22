@@ -331,257 +331,272 @@ img {
 
 /* ===== PARTNERS SECTION ===== */
 .partners {
-  padding: 60px var(--container-padding-desktop);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
+  padding: 40px var(--container-padding-mobile);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Mobile: 2 columns */
   gap: 20px;
+  justify-items: center;
+  align-items: center;
 }
 
 .partners img {
-  width: 212px;
-  height: 60px;
+  width: 120px;
+  height: 50px;
   object-fit: contain;
 }
 
-@media (max-width: 768px) {
+/* Force 5th image to span full width on mobile/tablet if needed */
+.partners img:nth-child(5) {
+  grid-column: 1 / -1;
+}
+
+/* Tablet (min-width: 768px) */
+@media (min-width: 768px) {
   .partners {
-    padding: 40px var(--container-padding-mobile);
-    justify-content: center;
-    /* Control wrapping precisely */
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    width: 100%;
+    gap: 30px;
+    /* Keep grid layout, just adjust gap */
+  }
+}
+
+@media (min-width: 992px) {
+  .partners {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Changed from space-between to center */
+    gap: 30px; /* Increased gap slightly */
+    padding: 60px var(--container-padding-desktop);
   }
 
   .partners img {
-    width: 120px;
-    height: 50px;
-    justify-self: center;
+    width: 212px;
+    height: 60px;
   }
-
-  /* Force 5th image to span full width and center */
+  
   .partners img:nth-child(5) {
-    grid-column: 1 / -1;
-    justify-self: center;
+    grid-column: auto; /* Reset grid span */
   }
 }
 
 /* ===== CORE STRENGTHS ===== */
 
 .core-strengths {
-  padding: 0 var(--container-padding-desktop);
+  padding: 0 var(--container-padding-mobile);
 }
 
 .core-strengths-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Mobile: 2 columns */
+  gap: 30px;
   padding: 50px 0;
   border-top: 2px solid var(--border-light);
   border-bottom: 2px solid var(--border-light);
   width: 100%;
+  justify-items: center;
 }
 
 .strength {
-  flex: 0 1 auto;
   display: flex;
-  gap: 15px;
-  align-items: flex-start;
-  min-width: 0;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+  width: 100%;
 }
+
 .strength-icon img {
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   object-fit: contain;
-  flex-shrink: 0;
 }
 
 .strength-content h2 {
-  font-family: var(--font-family);
-  font-weight: 400;
   font-size: 18px;
-  line-height: 100%;
-  letter-spacing: 0%;
-  margin-bottom: 8px;
+  font-weight: 400;
+  margin-bottom: 5px;
   color: var(--text);
-  text-align: left;
+  line-height: 100%;
 }
 
 .strength-content p {
-  font-family: var(--font-family);
-  font-weight: 500;
   font-size: 14px;
-  line-height: 100%;
-  letter-spacing: 0%;
+  font-weight: 500;
   color: var(--text);
-  text-align: left;
+  line-height: 100%;
 }
 
-@media (max-width: 768px) {
+/* Tablet & Desktop */
+@media (min-width: 768px) {
+  .core-strengths-container {
+    /* Grid 2 cols is already default, just adjusting gap/padding if needed */
+    gap: 40px;
+  }
+}
+
+@media (min-width: 992px) {
   .core-strengths {
-    padding: 0 var(--container-padding-mobile);
+    padding: 0 var(--container-padding-desktop);
   }
 
   .core-strengths-container {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-    padding: 50px 0;
+    display: flex; /* Switch to flex for desktop row */
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    gap: 0;
   }
 
   .strength {
-    flex: 0 0 calc(50% - 15px);
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
-    gap: 10px;
+    flex: 0 1 auto;
+    flex-direction: row;
+    align-items: flex-start;
+    text-align: left;
+    gap: 15px;
+    width: auto;
   }
 
   .strength-icon img {
-    width: 35px;
-    height: 35px;
-  }
-
-  .strength-content h2,
-  .strength-content p {
-    text-align: center;
+    width: 40px;
+    height: 40px;
   }
 
   .strength-content h2 {
-    margin-bottom: 5px;
+    margin-bottom: 8px;
   }
 }
 
 /* ===== BENEFITS SECTION ===== */
 .benefits {
-  padding: 60px var(--container-padding-desktop);
+  padding: 40px var(--container-padding-mobile);
 }
 
 .benefits-container {
   display: flex;
-  gap: 80px;
+  flex-direction: column; /* Mobile: Stacked */
+  gap: 40px;
   align-items: center;
 }
 
 .benefits-image {
-  flex: 1;
+  width: 100%;
 }
 
 .image-container {
   background-color: #f3fafb;
-  width: 493px;
-  height: 560.26px;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 493 / 560.26;
   border-radius: 24px;
-  padding: 24px;
+  padding: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .image-container img {
-  width: 445px;
-  height: 512.26px;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 445 / 512.26;
   border-radius: 12px;
   object-fit: cover;
 }
 
 .benefits-content {
-  flex: 1;
+  width: 100%;
+  text-align: center; /* Mobile: Centered */
 }
 
 .benefit-intro {
-  font-family: var(--font-family);
   font-weight: 500;
   font-size: 15px;
   line-height: 100%;
-  letter-spacing: 0%;
   color: var(--text);
   margin-bottom: 15px;
 }
 
 .benefits-content h2 {
-  font-family: var(--font-family);
   font-weight: 500;
-  font-size: 60px;
-  line-height: 100%;
-  letter-spacing: 0%;
+  font-size: 40px; /* Mobile font size */
+  line-height: 1.2;
   color: var(--text);
   margin-bottom: 30px;
 }
 
 .benefits-list p {
-  font-family: var(--font-family);
   font-weight: 400;
   font-size: 16px;
   line-height: 100%;
-  letter-spacing: 0%;
   color: var(--text);
   margin-bottom: 15px;
   display: flex;
   align-items: center;
   gap: 10px;
+  justify-content: flex-start; /* Keep list items left aligned or center? Usually list items look better left aligned even if headers are centered. Let's keep left for list items but maybe center the container? */
+  text-align: left;
 }
 
 .benefits-list i {
   color: var(--primary);
   font-size: 16px;
+  flex-shrink: 0;
 }
 
-@media (max-width: 768px) {
+/* Desktop (min-width: 992px) */
+@media (min-width: 992px) {
   .benefits {
-    padding: 40px var(--container-padding-mobile);
+    padding: 60px var(--container-padding-desktop);
   }
 
   .benefits-container {
-    flex-direction: column;
-    gap: 40px;
+    flex-direction: row; /* Desktop: Row */
+    gap: 80px;
+    align-items: center;
   }
 
-  .benefit-intro,
-  .benefits-content h2 {
-    text-align: center;
-  }
-
-  .benefits-list p {
-    text-align: left;
+  .benefits-image, 
+  .benefits-content {
+    flex: 1;
   }
 
   .image-container {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 493 / 560.26;
-    padding: 20px;
+    width: 493px;
+    height: 560.26px;
+    padding: 24px;
   }
 
   .image-container img {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 445 / 512.26;
-    border-radius: 0;
+    width: 445px;
+    height: 512.26px;
+  }
+
+  .benefits-content {
+    text-align: left;
+  }
+
+  .benefits-content h2 {
+    font-size: 60px;
+    line-height: 100%;
   }
 }
 
 /* ===== STATS SECTION ===== */
 .stats {
-  padding: 60px var(--container-padding-desktop);
+  padding: 40px var(--container-padding-mobile);
   font-family: var(--font-family);
 }
 
 .stats-container {
   display: flex;
-  gap: 10px;
+  flex-direction: column; /* Mobile: Stacked */
+  gap: 30px;
   align-items: center;
 }
 
 .stats-image {
-  flex: 1;
-  order: 2;
+  width: 100%;
   background-color: #f3fafb;
-  aspect-ratio: 541 / 607;
-  padding: 0 0 8% 8%;
+  aspect-ratio: 3 / 4; /* Mobile aspect ratio */
+  padding: 0 8% 8% 8%;
+  order: 0; /* Mobile: Image on top */
 }
 
 .stats-image img {
@@ -591,8 +606,10 @@ img {
 }
 
 .stats-content {
-  flex: 1;
-  order: 1;
+  width: 100%;
+  text-align: center; /* Mobile: Centered */
+  order: 1; /* Mobile: Content below */
+  padding: 0 20px;
 }
 
 .stats-intro {
@@ -603,16 +620,22 @@ img {
 
 .stats-content h2 {
   font-weight: 500;
-  font-size: 60px;
-  line-height: 1.1;
+  font-size: 40px; /* Mobile font size */
+  line-height: 1.2;
   color: var(--text);
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 
 .stats-grid {
   display: flex;
-  gap: 40px;
+  flex-direction: column; /* Mobile: Stacked stats */
+  align-items: center;
+  gap: 30px;
   margin-bottom: 40px;
+}
+
+.stat-item {
+  text-align: center;
 }
 
 .stat-number {
@@ -627,53 +650,69 @@ img {
   color: var(--text);
 }
 
-/* ========== MOBILE ========== */
-@media (max-width: 768px) {
+.stats-content .btn-primary {
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Tablet (min-width: 768px) */
+@media (min-width: 768px) {
+  .stats-grid {
+    flex-direction: row; /* Row for stats on tablet */
+    justify-content: center;
+    gap: 40px;
+  }
+}
+
+/* Desktop (min-width: 992px) */
+@media (min-width: 992px) {
   .stats {
-    padding: 40px var(--container-padding-mobile);
+    padding: 60px var(--container-padding-desktop);
   }
 
   .stats-container {
-    flex-direction: column;
-    gap: 30px;
+    flex-direction: row; /* Desktop: Row */
+    gap: 10px;
   }
 
   .stats-image {
-    order: 0;
-    width: 100%;
-    max-width: 100%;
-    aspect-ratio: 3 / 4;
-    padding: 0 8% 8% 8%;
-    margin: 0;
+    flex: 1;
+    order: 2; /* Desktop: Image on right */
+    aspect-ratio: 541 / 607;
+    padding: 0 0 8% 8%;
   }
 
   .stats-content {
-    order: 1;
-    text-align: center;
-    padding: 0 20px;
+    flex: 1;
+    order: 1; /* Desktop: Content on left */
+    text-align: left;
+    padding: 0;
   }
 
   .stats-content h2 {
-    font-size: 40px;
-    line-height: 1.2;
-    margin-bottom: 30px;
+    font-size: 60px;
+    line-height: 1.1;
+    margin-bottom: 40px;
   }
 
   .stats-grid {
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
+    justify-content: flex-start;
+    margin-bottom: 40px;
   }
 
   .stat-item {
-    text-align: center;
+    text-align: left;
   }
 
   .stats-content .btn-primary {
-    width: 100%;
-    max-width: 320px;
-    margin: 0 auto;
-    justify-content: center;
+    width: auto;
+    margin: 0;
+    display: inline-flex;
   }
 }
 
